@@ -5,3 +5,5 @@ export type Shape =
   | "hectagon"
   | "rhombus"
   | "triangle";
+
+export type PickStatus = "default" | "hit" | "miss" | "shape-hit";

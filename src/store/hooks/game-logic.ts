@@ -17,4 +17,17 @@ export const useMakePick = () => {
     });
 };
 
-export const useRemovePick = () => {};
+export const useRemovePick = () => {
+  const setState = useSetState();
+  return () =>
+    setState((prev) => {
+      const nextState = structuredClone(prev) as PlayState;
+      if (
+        nextState.config.roundLength !==
+        nextState.rounds[nextState.currentRound].length
+      ) {
+        nextState.rounds[nextState.currentRound].pop();
+      }
+      return nextState;
+    });
+};

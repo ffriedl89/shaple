@@ -17,13 +17,9 @@ export const createStore = <T extends unknown>(initialState: T): Store<T> => {
   };
 
   const subscribe = (callback: () => void) => {
-    const wrapped = () => {
-      console.log("callback called");
-      callback();
-    };
-    callbacks.add(wrapped);
+    callbacks.add(callback);
     return () => {
-      callbacks.delete(wrapped);
+      callbacks.delete(callback);
     };
   };
 

@@ -4,10 +4,11 @@ import { Hectagon } from "../shapes/Hectagon";
 import { Rhombus } from "../shapes/Rhombus";
 import { Square } from "../shapes/Square";
 import { Triangle } from "../shapes/Triangle";
-import { useMakePick } from "../store/hooks/game-logic";
+import { useMakePick, useRemovePick } from "../store/hooks/game-logic";
 
 export const Keyboard = () => {
   const makePick = useMakePick();
+  const removePick = useRemovePick();
 
   return (
     <div>
@@ -28,6 +29,9 @@ export const Keyboard = () => {
       </button>
       <button aria-label="Pick heart" onClick={() => makePick("heart")}>
         <Heart />
+      </button>
+      <button aria-label="Remove last pick" onClick={() => removePick()}>
+        {"<--"}
       </button>
     </div>
   );

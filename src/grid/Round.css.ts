@@ -1,9 +1,5 @@
 import { createVar, style } from "@vanilla-extract/css";
 
-export const roundClass = style({
-  display: "flex",
-});
-
 export const roundLength = createVar();
 
 export const picksClass = style({

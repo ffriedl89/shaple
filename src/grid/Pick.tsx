@@ -4,14 +4,19 @@ import { Hectagon } from "../shapes/Hectagon";
 import { Rhombus } from "../shapes/Rhombus";
 import { Square } from "../shapes/Square";
 import { Triangle } from "../shapes/Triangle";
-import { Shape } from "../store/types";
-import { pickClass } from "./Pick.css";
+import { PickStatus, Shape } from "../store/types";
+import { variant } from "./Pick.css";
 
 type PickProps = {
   pick: Shape;
+  status: PickStatus;
 };
 
-const ShapeComp = (props: PickProps) => {
+type ShapeProps = {
+  pick: Shape;
+};
+
+const ShapeComp = (props: ShapeProps) => {
   switch (props.pick) {
     case "square":
       return <Square />;
@@ -32,7 +37,7 @@ const ShapeComp = (props: PickProps) => {
 
 export const Pick = (props: PickProps) => {
   return (
-    <div class={pickClass}>
+    <div class={variant[props.status]}>
       <ShapeComp pick={props.pick}></ShapeComp>
     </div>
   );
