@@ -5,34 +5,36 @@ import { Rhombus } from "../shapes/Rhombus";
 import { Square } from "../shapes/Square";
 import { Triangle } from "../shapes/Triangle";
 import { useMakePick, useRemovePick } from "../store/hooks/game-logic";
+import { Key } from "./Key";
+import { keyboardClass } from "./Keyboard.css";
 
 export const Keyboard = () => {
   const makePick = useMakePick();
   const removePick = useRemovePick();
 
   return (
-    <div>
-      <button aria-label="Pick square" onClick={() => makePick("square")}>
+    <div class={keyboardClass}>
+      <Key aria-label="Pick square" onClick={() => makePick("square")}>
         <Square />
-      </button>
-      <button aria-label="Pick circle" onClick={() => makePick("circle")}>
+      </Key>
+      <Key aria-label="Pick circle" onClick={() => makePick("circle")}>
         <Circle />
-      </button>
-      <button aria-label="Pick rhombus" onClick={() => makePick("rhombus")}>
+      </Key>
+      <Key aria-label="Pick rhombus" onClick={() => makePick("rhombus")}>
         <Rhombus />
-      </button>
-      <button aria-label="Pick triangle" onClick={() => makePick("triangle")}>
+      </Key>
+      <Key aria-label="Pick triangle" onClick={() => makePick("triangle")}>
         <Triangle />
-      </button>
-      <button aria-label="Pick hectagon" onClick={() => makePick("hectagon")}>
+      </Key>
+      <Key aria-label="Pick hectagon" onClick={() => makePick("hectagon")}>
         <Hectagon />
-      </button>
-      <button aria-label="Pick heart" onClick={() => makePick("heart")}>
+      </Key>
+      <Key aria-label="Pick heart" onClick={() => makePick("heart")}>
         <Heart />
-      </button>
-      <button aria-label="Remove last pick" onClick={() => removePick()}>
-        {"<--"}
-      </button>
+      </Key>
+      <Key aria-label="Remove last pick" onClick={() => removePick()}>
+        &#x232b;
+      </Key>
     </div>
   );
 };

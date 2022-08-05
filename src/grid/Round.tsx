@@ -1,6 +1,7 @@
 import { assignInlineVars } from "@vanilla-extract/dynamic";
 import { useConfig, useRoundPick } from "../store/hooks/selectors";
 import { Pick } from "./Pick";
+import { animationOrder } from "./Pick.css";
 import { picksClass, roundLength } from "./Round.css";
 
 type RoundProps = {
@@ -19,10 +20,10 @@ export const Round = (props: RoundProps) => {
       style={assignInlineVars({ [roundLength]: `${config.roundLength}` })}
     >
       {ROUND_ARRAY.map((_, index) => {
-        console.log(picks[index]);
         const pick = picks[index];
         return pick ? (
           <Pick
+            style={assignInlineVars({ [animationOrder]: `${index}` })}
             key={`${round}_${index}`}
             pick={pick.shape}
             status={pick.status}

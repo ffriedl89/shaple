@@ -7,7 +7,7 @@ export function Rhombus() {
       viewBox="0 0 50 100"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <path d="M 0,50 L25,0 L50,50 L25,100 z" />
+      <path fill="currentColor" d="M 0,50 L25,0 L50,50 L25,100 z" />
     </svg>
   );
 }

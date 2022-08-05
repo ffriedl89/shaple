@@ -10,12 +10,14 @@ export type PlayState = {
   };
 };
 
+const initialGameLength = 10;
+
 export const initialState: PlayState = {
-  result: ["square", "circle", "rhombus", "triangle", "hectagon"],
+  result: ["triangle", "circle", "hectagon", "triangle", "square"],
   currentRound: 0,
-  rounds: [[], [], [], [], [], []],
+  rounds: Array.from(Array(initialGameLength)).map(() => []),
   config: {
-    gameLength: 10,
+    gameLength: initialGameLength,
     roundLength: 5,
   },
 };

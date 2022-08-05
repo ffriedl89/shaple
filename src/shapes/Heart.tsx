@@ -8,6 +8,7 @@ export function Heart() {
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
+        fill="currentColor"
         d="M 10,30
            A 20,20 0,0,1 50,30
            A 20,20 0,0,1 90,30

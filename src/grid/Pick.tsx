@@ -1,3 +1,5 @@
+import { assignInlineVars } from "@vanilla-extract/dynamic";
+import { JSX } from "preact";
 import { Circle } from "../shapes/Circle";
 import { Heart } from "../shapes/Heart";
 import { Hectagon } from "../shapes/Hectagon";
@@ -10,6 +12,7 @@ import { variant } from "./Pick.css";
 type PickProps = {
   pick: Shape;
   status: PickStatus;
+  style: string | JSX.CSSProperties;
 };
 
 type ShapeProps = {
@@ -37,7 +40,7 @@ const ShapeComp = (props: ShapeProps) => {
 
 export const Pick = (props: PickProps) => {
   return (
-    <div class={variant[props.status]}>
+    <div class={variant[props.status]} style={props.style}>
       <ShapeComp pick={props.pick}></ShapeComp>
     </div>
   );

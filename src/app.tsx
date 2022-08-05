@@ -1,12 +1,14 @@
 import { GameGrid } from "./grid/GameGrid";
 import { Keyboard } from "./keyboard/Keyboard";
+import { Header } from "./layout/Header";
+import { Layout } from "./layout/Layout";
 
 export function App() {
   return (
-    <>
-      <h1>Test</h1>
-      <GameGrid></GameGrid>
+    <Layout>
+      <Header></Header>
       <Keyboard></Keyboard>
-    </>
+      <GameGrid></GameGrid>
+    </Layout>
   );
 }

@@ -1,5 +1,5 @@
 import { PlayState } from "../play-state";
-import { Shape } from "../types";
+import { PickStatus, Shape } from "../types";
 import { useSetState } from "./set-state";
 
 export const useMakePick = () => {
@@ -31,3 +31,29 @@ export const useRemovePick = () => {
       return nextState;
     });
 };
+
+export function determineRoundStatus(
+  round: Shape[],
+  result: Shape[]
+): Array<{ shape: Shape; status: PickStatus }> {
+  const shapeCounts = new Map<Shape, number>();
+
+  for (const resultShape of result) {
+    shapeCounts.set(resultShape, (shapeCounts.get(resultShape) || 0) + 1);
+  }
+
+  return result.map((resultShape, index) => {
+    const pickShape = round[index];
+
+    let status: PickStatus = "miss";
+    if (pickShape === resultShape) {
+      status = "hit";
+      shapeCounts.set(pickShape, (shapeCounts.get(pickShape) || 1) - 1);
+    } else if (shapeCounts.get(pickShape) === 1) {
+      status = "shape-hit";
+      shapeCounts.set(pickShape, (shapeCounts.get(pickShape) || 1) - 1);
+    }
+
+    return { shape: pickShape, status };
+  });
+}
