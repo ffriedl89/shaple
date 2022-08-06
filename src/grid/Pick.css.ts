@@ -51,13 +51,6 @@ const pickClass = style({
       zIndex: -1,
       transition: "opacity 100ms linear",
     },
-    "&:hover,&:focus": {
-      color: themeVars.colors.bg,
-      textShadow: "none",
-    },
-    "&:hover::before, &:focus::before, &:hover::after, &:focus::after": {
-      opacity: 1,
-    },
   },
 });
 

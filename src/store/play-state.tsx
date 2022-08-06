@@ -13,11 +13,11 @@ export type PlayState = {
 const initialGameLength = 10;
 
 export const initialState: PlayState = {
-  result: ["triangle", "circle", "hectagon", "triangle", "square"],
+  result: ["triangle", "circle", "hectagon", "triangle"],
   currentRound: 0,
   rounds: Array.from(Array(initialGameLength)).map(() => []),
   config: {
     gameLength: initialGameLength,
-    roundLength: 5,
+    roundLength: 4,
   },
 };

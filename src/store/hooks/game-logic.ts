@@ -42,18 +42,29 @@ export function determineRoundStatus(
     shapeCounts.set(resultShape, (shapeCounts.get(resultShape) || 0) + 1);
   }
 
-  return result.map((resultShape, index) => {
-    const pickShape = round[index];
+  return result
+    .map<{ shape: Shape; status: PickStatus }>((resultShape, index) => {
+      const pickShape = round[index];
 
-    let status: PickStatus = "miss";
-    if (pickShape === resultShape) {
-      status = "hit";
-      shapeCounts.set(pickShape, (shapeCounts.get(pickShape) || 1) - 1);
-    } else if (shapeCounts.get(pickShape) === 1) {
-      status = "shape-hit";
-      shapeCounts.set(pickShape, (shapeCounts.get(pickShape) || 1) - 1);
-    }
+      let status: PickStatus = "miss";
+      if (pickShape === resultShape) {
+        status = "hit";
+        shapeCounts.set(pickShape, (shapeCounts.get(pickShape) as number) - 1);
+      }
 
-    return { shape: pickShape, status };
-  });
+      return { shape: pickShape, status };
+    })
+    .map((result) => {
+      if (result.status === "hit") {
+        return result;
+      }
+      const pickShape = result.shape;
+      let status = result.status;
+      if ((shapeCounts.get(pickShape) ?? 0) >= 1) {
+        status = "shape-hit";
+        shapeCounts.set(pickShape, (shapeCounts.get(pickShape) as number) - 1);
+      }
+
+      return { shape: pickShape, status };
+    });
 }
