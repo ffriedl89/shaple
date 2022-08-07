@@ -1,9 +1,10 @@
 import { shapeClass } from "./shape.css";
+import { TShapeProps } from "./types";
 
-export function Hectagon() {
+export function Hectagon(props: TShapeProps) {
   return (
     <svg
-      class={shapeClass}
+      class={`${shapeClass} ${props.class}`}
       viewBox="0 0 100 90"
       xmlns="http://www.w3.org/2000/svg"
     >

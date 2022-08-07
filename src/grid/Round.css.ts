@@ -1,16 +1,16 @@
 import { createVar, style } from "@vanilla-extract/css";
-import { sizeVars } from "../app.css";
+import { sizeVars, spaceVars } from "../app.css";
 
 export const roundLength = createVar();
 
 export const picksClass = style({
   display: "grid",
   margin: "0 auto",
-  gridTemplateColumns: `repeat(${roundLength}, 1fr)`,
+  gridTemplateColumns: `${sizeVars.step._3} repeat(${roundLength}, ${sizeVars.step._3})`,
   vars: {
     [roundLength]: "4",
   },
   gap: sizeVars.step._1,
-  alignItems: "space-around",
   justifyItems: "center",
+  height: spaceVars.pairs["m-l"],
 });

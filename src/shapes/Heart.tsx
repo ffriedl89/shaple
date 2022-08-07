@@ -1,9 +1,10 @@
 import { shapeClass } from "./shape.css";
+import { TShapeProps } from "./types";
 
-export function Heart() {
+export function Heart(props: TShapeProps) {
   return (
     <svg
-      class={shapeClass}
+      class={`${shapeClass} ${props.class}`}
       viewBox="0 0 100 100"
       xmlns="http://www.w3.org/2000/svg"
     >

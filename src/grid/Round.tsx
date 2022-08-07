@@ -3,6 +3,7 @@ import { useConfig, useRoundPick } from "../store/hooks/selectors";
 import { Pick } from "./Pick";
 import { animationOrder } from "./Pick.css";
 import { picksClass, roundLength } from "./Round.css";
+import { RoundStatus } from "./RoundStatus";
 
 type RoundProps = {
   round: number;
@@ -10,7 +11,7 @@ type RoundProps = {
 
 export const Round = (props: RoundProps) => {
   const { round } = props;
-  const picks = useRoundPick(round);
+  const { picks, summary } = useRoundPick(round);
   const config = useConfig();
 
   const ROUND_ARRAY = Array.from(Array(config.roundLength));
@@ -19,6 +20,7 @@ export const Round = (props: RoundProps) => {
       class={picksClass}
       style={assignInlineVars({ [roundLength]: `${config.roundLength}` })}
     >
+      <RoundStatus summary={summary}></RoundStatus>
       {ROUND_ARRAY.map((_, index) => {
         const pick = picks[index];
         return pick ? (

@@ -15,10 +15,13 @@ export const useRoundPick = (roundNumber: number) =>
     let picks: Array<{ shape: Shape; status: PickStatus }> = round.map(
       (pick) => ({ shape: pick, status: "default" })
     );
+    let summary = { hit: 0, shapeHit: 0 };
     if (round.length === state.config.roundLength) {
-      picks = determineRoundStatus(round, result);
+      const roundStatus = determineRoundStatus(round, result);
+      picks = roundStatus.result;
+      summary = roundStatus.summary;
     }
-    return picks;
+    return { picks, summary };
   });
 
 export const useConfig = () => useSelector((state) => state.config);

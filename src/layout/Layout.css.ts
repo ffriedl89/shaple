@@ -8,7 +8,7 @@ export const layoutClass = style({
   "footer"
   "marginbottom"`,
   gridTemplateColumns: "1fr",
-  gridTemplateRows: "2vh auto 1fr auto 2vh",
+  gridTemplateRows: "1vh auto 1fr auto 1vh",
   gridGap: "10px",
   height: "100vh",
 });

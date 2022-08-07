@@ -48,6 +48,7 @@ export const sizeVars = createGlobalTheme(":root", {
 export const themeVars = createGlobalTheme(":root", {
   colors: {
     bg: "hsl(262, 64%, 8%)",
+    bgInset: "hsl(263, 62%, 4%)",
     interactive: "hsl(261, 87%, 72%)",
     interactiveHover: "hsl(261, 87%, 62%)",
     interactiveActive: "hsl(261, 87%, 42%)",

@@ -32,10 +32,13 @@ export const useRemovePick = () => {
     });
 };
 
-export function determineRoundStatus(
-  round: Shape[],
-  result: Shape[]
-): Array<{ shape: Shape; status: PickStatus }> {
+type TResultEntry = { shape: Shape; status: PickStatus };
+export type TRoundStatus = {
+  summary: { hit: number; shapeHit: number };
+  result: Array<TResultEntry>;
+};
+
+export function determineRoundStatus(round: Shape[], result: Shape[]) {
   const shapeCounts = new Map<Shape, number>();
 
   for (const resultShape of result) {
@@ -43,7 +46,7 @@ export function determineRoundStatus(
   }
 
   return result
-    .map<{ shape: Shape; status: PickStatus }>((resultShape, index) => {
+    .map<TResultEntry>((resultShape, index) => {
       const pickShape = round[index];
 
       let status: PickStatus = "miss";
@@ -54,7 +57,7 @@ export function determineRoundStatus(
 
       return { shape: pickShape, status };
     })
-    .map((result) => {
+    .map<TResultEntry>((result) => {
       if (result.status === "hit") {
         return result;
       }
@@ -66,5 +69,23 @@ export function determineRoundStatus(
       }
 
       return { shape: pickShape, status };
-    });
+    })
+    .reduce<TRoundStatus>(
+      (acc, entry) => {
+        switch (entry.status) {
+          case "hit":
+            acc.summary.hit++;
+            break;
+          case "shape-hit":
+            acc.summary.shapeHit++;
+            break;
+        }
+        acc.result.push(entry);
+        return acc;
+      },
+      {
+        summary: { hit: 0, shapeHit: 0 },
+        result: [],
+      }
+    );
 }
