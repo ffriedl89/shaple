@@ -6,4 +6,5 @@ export const keyboardClass = style({
   gap: "1rem",
   justifyContent: "center",
   gridArea: "footer",
+  padding: "1rem",
 });

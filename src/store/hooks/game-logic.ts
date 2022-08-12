@@ -1,6 +1,7 @@
-import { PlayState } from "../play-state";
+import { GameState, PlayState } from "../play-state";
 import { PickStatus, Shape } from "../types";
 import { useSetState } from "./set-state";
+import { useSelector } from "./use-selector";
 
 export const useMakePick = () => {
   const setState = useSetState();
@@ -8,11 +9,18 @@ export const useMakePick = () => {
     setState((prev) => {
       const nextState = structuredClone(prev) as PlayState;
       let currentRound = prev.currentRound;
-      if (nextState.rounds[currentRound].length === prev.config.roundLength) {
-        currentRound++;
+
+      const gameState = determineGameState(nextState);
+      nextState.gameState = gameState;
+      if (gameState !== "finished") {
+        nextState.rounds[currentRound].push(shape);
+
+        if (nextState.rounds[currentRound].length === prev.config.roundLength) {
+          currentRound++;
+        }
+        nextState.currentRound = currentRound;
       }
-      nextState.rounds[currentRound].push(shape);
-      nextState.currentRound = currentRound;
+
       return nextState;
     });
 };
@@ -88,4 +96,22 @@ export function determineRoundStatus(round: Shape[], result: Shape[]) {
         result: [],
       }
     );
+}
+
+function determineGameState(state: PlayState) {
+  const roundIndex = state.currentRound > 0 ? state.currentRound - 1 : 0;
+  const isGameFinished = state.result.every(
+    (pick, index) => pick === state.rounds[roundIndex][index]
+  );
+  if (isGameFinished) {
+    return "finished";
+  }
+  if (state.currentRound > 0) {
+    return "started";
+  }
+  return "not-started";
+}
+
+export function useGameState(): GameState {
+  return useSelector(determineGameState);
 }

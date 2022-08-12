@@ -14,8 +14,8 @@
     "@vanilla-extract/dynamic": "^2.0.2",
     "@vanilla-extract/vite-plugin": "^3.2.1",
     "clsx": "^1.2.1",
+    "date-fns": "^2.29.1",
     "preact": "^10.9.0",
-    "seedrandom": "^3.0.5",
     "use-sync-external-store": "^1.2.0"
   },
   "devDependencies": {

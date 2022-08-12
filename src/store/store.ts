@@ -4,15 +4,18 @@ export type Store<T> = {
   subscribe: (callback: () => void) => () => void;
 };
 
-export const createStore = <T extends unknown>(initialState: T): Store<T> => {
+export const createStore = <T extends unknown>(
+  initialState: T,
+  middleware: (state: T) => T
+): Store<T> => {
   let state = initialState;
   const callbacks = new Set<() => void>();
   const getState = () => state;
   const setState = (nextState: T | ((prev: T) => T)) => {
     state =
       typeof nextState === "function"
-        ? (nextState as (prev: T) => T)(state)
-        : nextState;
+        ? middleware((nextState as (prev: T) => T)(state))
+        : middleware(nextState);
     callbacks.forEach((callback) => callback());
   };
 

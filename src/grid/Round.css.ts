@@ -1,5 +1,5 @@
 import { createVar, style } from "@vanilla-extract/css";
-import { sizeVars, spaceVars } from "../app.css";
+import { sizeVars, spaceVars, themeVars } from "../app.css";
 
 export const roundLength = createVar();
 

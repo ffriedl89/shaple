@@ -10,7 +10,7 @@ export const roundStatusClass = style({
 });
 
 export const roundStatusShapeClass = style({
-  color: themeVars.colors.bgInset,
+  color: themeVars.colors.miss,
   transition: "color 200ms linear, filter 200ms linear",
 });
 

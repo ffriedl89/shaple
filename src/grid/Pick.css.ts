@@ -1,5 +1,6 @@
 import { createVar, style } from "@vanilla-extract/css";
 import { styleVariants } from "@vanilla-extract/css";
+import { headshake, swing, tada } from "../animate.css";
 import { spaceVars, themeVars } from "../app.css";
 
 export const pickColorVar = createVar();
@@ -31,9 +32,9 @@ export const variant = styleVariants({
   miss: [
     pickClass,
     {
-      // animationName: headshake,
-      // animationDuration: "700ms",
-      // animationTimingFunction: "ease-in-out",
+      animationName: headshake,
+      animationDuration: "700ms",
+      animationTimingFunction: "ease-in-out",
       vars: {
         [pickColorVar]: themeVars.colors.miss,
       },
@@ -42,9 +43,9 @@ export const variant = styleVariants({
   hit: [
     pickClass,
     {
-      // animationName: tada,
-      // animationDuration: "700ms",
-      // animationTimingFunction: "ease-in-out",
+      animationName: tada,
+      animationDuration: "700ms",
+      animationTimingFunction: "ease-in-out",
       vars: {
         [pickColorVar]: themeVars.colors.hit,
       },
@@ -53,9 +54,9 @@ export const variant = styleVariants({
   "shape-hit": [
     pickClass,
     {
-      // animationName: swing,
-      // animationDuration: "700ms",
-      // animationTimingFunction: "ease-in-out",
+      animationName: swing,
+      animationDuration: "700ms",
+      animationTimingFunction: "ease-in-out",
       vars: {
         [pickColorVar]: themeVars.colors.shapeHit,
       },
