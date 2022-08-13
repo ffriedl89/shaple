@@ -15,6 +15,7 @@
     "@vanilla-extract/vite-plugin": "^3.2.1",
     "clsx": "^1.2.1",
     "date-fns": "^2.29.1",
+    "party-js": "^2.2.0",
     "preact": "^10.9.0",
     "use-sync-external-store": "^1.2.0"
   },

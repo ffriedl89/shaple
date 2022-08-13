@@ -45,7 +45,7 @@ export const sizeVars = createGlobalTheme(":root", {
   },
 });
 
-export const themeVars = createGlobalTheme(":root", {
+export const theme = {
   colors: {
     bg: "hsl(262, 64%, 8%)",
     bgInset: "hsl(263, 62%, 4%)",
@@ -58,7 +58,9 @@ export const themeVars = createGlobalTheme(":root", {
     text: "white",
     textOnColor: "black",
   },
-});
+};
+
+export const themeVars = createGlobalTheme(":root", theme);
 
 globalStyle("*, *::before, *::after", {
   boxSizing: "border-box",

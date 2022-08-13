@@ -1,5 +1,11 @@
-import { addDays, addHours, startOfToday } from "date-fns";
-import { de } from "date-fns/locale";
+import {
+  addDays,
+  addHours,
+  addMinutes,
+  isBefore,
+  startOfToday,
+  subDays,
+} from "date-fns";
 import { createRandomWithSeed } from "../util/create-random-with-seed";
 import { Shape, Shapes } from "./types";
 
@@ -15,14 +21,23 @@ export type PlayState = {
     gameLength: number;
   };
   gameState: GameState;
+  startDate: Date;
+  endDate: Date;
 };
 
 const initialGameLength = 10;
 const initialRoundLength = 4;
 
 function getStartDate() {
-  console.log(startOfToday());
-  return startOfToday();
+  const currentDate = new Date(Date.now());
+  const midDay = addMinutes(addHours(startOfToday(), 13), 37);
+  const startDate = isBefore(currentDate, midDay) ? subDays(midDay, 1) : midDay;
+  return startDate;
+}
+
+export function getStartEndDate() {
+  const startDate = getStartDate();
+  return { startDate, endDate: addDays(startDate, 1) };
 }
 
 export function generateResult() {
@@ -47,7 +62,6 @@ export function generateInitialRounds() {
 }
 
 const startDate = getStartDate();
-const endDate = addDays(startDate, 1);
 
 const defaultState = {
   result,
@@ -59,8 +73,7 @@ const defaultState = {
     roundLength: initialRoundLength,
   },
   gameState: "not-started",
-  startDate,
-  endDate,
+  ...getStartEndDate(),
 };
 
 const storedState = window.localStorage.getItem("playState")
@@ -69,6 +82,5 @@ const storedState = window.localStorage.getItem("playState")
 
 export const initialState: PlayState = {
   ...storedState,
-  startDate,
-  endDate,
+  ...getStartEndDate(),
 };

@@ -1,5 +1,9 @@
 import { useEffect } from "preact/hooks";
-import { generateInitialRounds, generateResult } from "../play-state";
+import {
+  generateInitialRounds,
+  generateResult,
+  getStartEndDate,
+} from "../play-state";
 import { useSetState } from "./set-state";
 import { useSelector } from "./use-selector";
 
@@ -17,10 +21,11 @@ export const useDailyGame = () => {
             resultSeed,
             currentRound: 0,
             rounds: generateInitialRounds(),
+            ...getStartEndDate(),
           };
         });
       }
-    }, 10000);
+    }, 2000);
     return () => clearInterval(intervalID);
-  }, []);
+  }, [seed]);
 };

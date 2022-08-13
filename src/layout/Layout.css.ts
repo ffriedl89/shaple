@@ -7,4 +7,5 @@ export const layoutClass = style({
   height: "100vh",
   alignContent: "center",
   justifyContent: "space-between",
+  textAlign: "center",
 });
