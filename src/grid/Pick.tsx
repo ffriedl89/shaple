@@ -1,4 +1,3 @@
-import { assignInlineVars } from "@vanilla-extract/dynamic";
 import { JSX } from "preact";
 import { Circle } from "../shapes/Circle";
 import { Heart } from "../shapes/Heart";
@@ -6,7 +5,7 @@ import { Hectagon } from "../shapes/Hectagon";
 import { Rhombus } from "../shapes/Rhombus";
 import { Square } from "../shapes/Square";
 import { Triangle } from "../shapes/Triangle";
-import { useGameState } from "../store/hooks/game-logic";
+import { useGameState } from "../store/hooks/selectors";
 import { PickStatus, Shape } from "../store/types";
 import { pickShapeClass, variant } from "./Pick.css";
 
@@ -41,10 +40,8 @@ const ShapeComp = (props: ShapeProps) => {
 };
 
 export const Pick = (props: PickProps) => {
-  const gameState = useGameState();
-  const style = gameState === "finished" ? props.status : "default";
   return (
-    <div class={variant[style]} style={props.style}>
+    <div class={variant[props.status]} style={props.style}>
       <ShapeComp class={pickShapeClass} pick={props.pick}></ShapeComp>
     </div>
   );

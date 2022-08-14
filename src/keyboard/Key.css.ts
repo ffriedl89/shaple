@@ -14,10 +14,14 @@ export const keyClass = style({
   fontSize: fontVars.step._2,
   userSelect: "none",
   selectors: {
-    "&:hover": {
+    "&[aria-disabled=true]": {
+      cursor: "not-allowed",
+      opacity: 0.5,
+    },
+    "&[aria-disabled=false]:hover": {
       backgroundColor: themeVars.colors.interactiveHover,
     },
-    "&:active": {
+    "&[aria-disabled=true]:active": {
       backgroundColor: themeVars.colors.interactiveActive,
     },
     "&:focus-visible": {

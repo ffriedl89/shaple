@@ -4,7 +4,7 @@ import { Hectagon } from "../shapes/Hectagon";
 import { Rhombus } from "../shapes/Rhombus";
 import { Square } from "../shapes/Square";
 import { Triangle } from "../shapes/Triangle";
-import { useMakePick, useRemovePick } from "../store/hooks/game-logic";
+import { useMakePick, useRemovePick } from "../store/hooks/selectors";
 import { Key } from "./Key";
 import { keyboardClass } from "./Keyboard.css";
 

@@ -1,11 +1,9 @@
 import {
   differenceInMilliseconds,
-  formatDistanceToNow,
   formatDuration,
   intervalToDuration,
 } from "date-fns";
-import { useEffect, useMemo, useState } from "preact/hooks";
-import { useSetState } from "./set-state";
+import { useEffect, useState } from "preact/hooks";
 import { useSelector } from "./use-selector";
 
 const formatDistanceLocale = {
@@ -18,11 +16,7 @@ const shortEnLocale = {
     formatDistanceLocale[token].replace("{{count}}", count),
 };
 
-function formatRemainingTime(endDate: Date) {
-  const duration = intervalToDuration({
-    start: 0,
-    end: Math.abs(differenceInMilliseconds(new Date(), endDate)),
-  });
+export function formatDurationString(duration: Duration) {
   return (
     formatDuration(duration, {
       format: ["hours", "minutes", "seconds"],
@@ -31,15 +25,25 @@ function formatRemainingTime(endDate: Date) {
   );
 }
 
+export function formatDurationFromStartToEnd(startDate: Date, endDate: Date) {
+  const duration = intervalToDuration({
+    start: 0,
+    end: Math.abs(differenceInMilliseconds(startDate, endDate)),
+  });
+  return formatDurationString(duration);
+}
+
 export const useRemainingTime = () => {
   const playState = useSelector((state) => state);
   const [stringState, setStringState] = useState(() =>
-    formatRemainingTime(playState.endDate)
+    formatDurationFromStartToEnd(new Date(), playState.endDate)
   );
 
   useEffect(() => {
     const intervalID = setInterval(() => {
-      setStringState(formatRemainingTime(playState.endDate));
+      setStringState(
+        formatDurationFromStartToEnd(new Date(), playState.endDate)
+      );
     }, 1000);
 
     return () => clearInterval(intervalID);

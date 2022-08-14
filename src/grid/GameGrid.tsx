@@ -1,10 +1,9 @@
 import { useEffect, useRef } from "preact/hooks";
-import { useGameState } from "../store/hooks/game-logic";
-import { useConfig } from "../store/hooks/selectors";
+import { useConfig, useGameState } from "../store/hooks/selectors";
 import { gameGridClass } from "./GameGrid.css";
 import { Round } from "./Round";
 import { sparkles, Color } from "party-js";
-import { theme, themeVars } from "../app.css";
+import { theme } from "../app.css";
 
 const extractHsl = (color: string) => {
   const groups = color.match(
@@ -28,7 +27,6 @@ export const GameGrid = () => {
 
   useEffect(() => {
     if (gameState === "finished" && gridRef.current) {
-      console.log(Color.fromHsl(...extractHsl(themeVars.colors.hit)));
       sparkles(gridRef.current, {
         lifetime: [10, 20],
         count: [150, 200],

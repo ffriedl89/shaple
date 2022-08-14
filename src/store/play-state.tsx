@@ -21,6 +21,10 @@ export type PlayState = {
     gameLength: number;
   };
   gameState: GameState;
+  try: {
+    start: string | null;
+    end: string | null;
+  };
   startDate: Date;
   endDate: Date;
 };
@@ -61,9 +65,7 @@ export function generateInitialRounds() {
   return Array.from(Array(initialGameLength)).map(() => []);
 }
 
-const startDate = getStartDate();
-
-const defaultState = {
+const defaultState: PlayState = {
   result,
   resultSeed,
   currentRound: 0,
@@ -71,6 +73,10 @@ const defaultState = {
   config: {
     gameLength: initialGameLength,
     roundLength: initialRoundLength,
+  },
+  try: {
+    start: null,
+    end: null,
   },
   gameState: "not-started",
   ...getStartEndDate(),

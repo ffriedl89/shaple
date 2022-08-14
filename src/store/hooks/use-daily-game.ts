@@ -20,6 +20,10 @@ export const useDailyGame = () => {
             result,
             resultSeed,
             currentRound: 0,
+            try: {
+              start: null,
+              end: null,
+            },
             rounds: generateInitialRounds(),
             ...getStartEndDate(),
           };
