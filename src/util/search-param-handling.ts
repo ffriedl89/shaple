@@ -12,7 +12,7 @@ export function generateSearchParam(
   rounds: PlayState["rounds"],
   config: PlayState["config"],
   result: PlayState["result"],
-  tryStartEnd: PlayState["try"]
+  tryStartEnd?: PlayState["try"]
 ) {
   const pathArray: Array<number | string> = [];
   for (const [index] of rounds.entries()) {
@@ -37,14 +37,17 @@ export function generateSearchParam(
   }
   const searchParams = new URLSearchParams();
   searchParams.set(PATH_SEARCH_PARAM, btoa(pathArray.join("")));
-  const { start, end } = tryStartEnd;
-  if (start && end) {
-    const difference = differenceInMilliseconds(
-      parseISO(end),
-      parseISO(start)
-    ).toString();
-    searchParams.set(DURATION_SEARCH_PARAM, btoa(difference));
+  if (tryStartEnd) {
+    const { start, end } = tryStartEnd;
+    if (start && end) {
+      const difference = differenceInMilliseconds(
+        parseISO(end),
+        parseISO(start)
+      ).toString();
+      searchParams.set(DURATION_SEARCH_PARAM, btoa(difference));
+    }
   }
+
   return searchParams;
 }
 
