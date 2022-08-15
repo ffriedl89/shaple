@@ -4,11 +4,11 @@ import { dialog, dialogContentClass } from "./Dialog.css";
 
 type DialogProps = {
   open?: boolean;
-  onOpenChange?: (shouldOpen: boolean) => void;
+  onClose?: () => void;
 };
 
 export const Dialog: FunctionalComponent<DialogProps> = (props) => {
-  const { children, open = false } = props;
+  const { children, open = false, onClose } = props;
 
   const dialogRef = useRef<HTMLDialogElement>(null);
 
@@ -19,7 +19,7 @@ export const Dialog: FunctionalComponent<DialogProps> = (props) => {
   }, [props.open]);
 
   return (
-    <dialog class={dialog({ open })} ref={dialogRef}>
+    <dialog class={dialog({ open })} ref={dialogRef} onClose={onClose}>
       <div class={dialogContentClass}>{children}</div>
     </dialog>
   );

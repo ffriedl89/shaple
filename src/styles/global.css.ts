@@ -5,6 +5,7 @@ import { themeVars } from "./vars.css";
 
 globalStyle("*, *::before, *::after", {
   boxSizing: "border-box",
+  fontVariantNumeric: "tabular-nums",
 });
 
 globalStyle("body, h1, h2, h3, h4,p, figure, blockquote, dl, dd", {

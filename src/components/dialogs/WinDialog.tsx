@@ -15,7 +15,7 @@ export const WinDialog = (props: WinDialogProps) => {
   return (
     <Dialog
       open={props.open}
-      onOpenChange={() => {
+      onClose={() => {
         props.onOpenChange?.(false);
       }}
     >
@@ -37,7 +37,7 @@ export const WinDialog = (props: WinDialogProps) => {
             id="confirmBtn"
             value="default"
           >
-            Got it!
+            Close
           </button>
         </div>
       </form>
