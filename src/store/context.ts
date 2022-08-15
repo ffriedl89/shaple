@@ -1,9 +1,9 @@
 import { createContext } from "preact";
-import { initialState, PlayState } from "./play-state";
+import { initialState, StoreState } from "./store-state";
 import { createStore, Store } from "./store";
 
-export const PlayStateContext = createContext<Store<PlayState>>(
-  createStore<PlayState>(initialState, (state) => {
+export const PlayStateContext = createContext<Store<StoreState>>(
+  createStore<StoreState>(initialState, (state) => {
     if (window.localStorage) {
       window.localStorage.setItem("playState", JSON.stringify(state));
     }

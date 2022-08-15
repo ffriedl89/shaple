@@ -1,6 +1,6 @@
 import { differenceInMilliseconds, parseISO } from "date-fns";
-import { getRoundPicks } from "../store/hooks/game-logic";
-import { PlayState } from "../store/play-state";
+import { getRoundPicks } from "../logic/game-logic";
+import { useSelector } from "../store/hooks/useSelector";
 import { PickStatus } from "../store/types";
 
 const pathIndices: Array<PickStatus> = ["hit", "shape-hit", "miss", "default"];
@@ -8,12 +8,14 @@ const pathIndices: Array<PickStatus> = ["hit", "shape-hit", "miss", "default"];
 export const PATH_SEARCH_PARAM = "p";
 export const DURATION_SEARCH_PARAM = "d";
 
-export function generateSearchParam(
-  rounds: PlayState["rounds"],
-  config: PlayState["config"],
-  result: PlayState["result"],
-  tryStartEnd?: PlayState["try"]
-) {
+export function useGamePathSearchParams() {
+  const { config, rounds, result, tryStartEnd } = useSelector((state) => ({
+    config: state.config,
+    rounds: state.rounds,
+    result: state.result,
+    tryStartEnd: state.try,
+  }));
+
   const pathArray: Array<number | string> = [];
   for (const [index] of rounds.entries()) {
     const roundPicks = getRoundPicks({

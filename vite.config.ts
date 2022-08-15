@@ -17,4 +17,7 @@ export default defineConfig({
     preact(),
     vanillaExtractPlugin(),
   ],
+  esbuild: {
+    logOverride: { "this-is-undefined-in-esm": "silent" },
+  },
 });

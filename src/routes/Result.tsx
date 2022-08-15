@@ -1,7 +1,8 @@
-import { Header } from "../layout/Header";
-import { GameDuration } from "../result/GameDuration";
-import { ResultGrid, useGameFromUrl } from "../result/ResultGrid";
-import { ResultLayout } from "../result/ResultLayout";
+import { Header } from "../components/layout/Header";
+import { GameDuration } from "../components/result/GameDuration";
+import { ResultGrid, useGameFromUrl } from "../components/result/ResultGrid";
+import { ResultLayout } from "../components/result/ResultLayout";
+import { ResultTextual } from "../components/result/ResultTextual";
 
 type ResultProps = {
   r?: string;
@@ -15,6 +16,7 @@ export const Result = (props: ResultProps) => {
     <ResultLayout>
       <Header />
       <ResultGrid path={path} />
+      <ResultTextual path={path} />
       <GameDuration duration={duration} />
     </ResultLayout>
   );
