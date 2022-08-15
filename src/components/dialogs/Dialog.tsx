@@ -15,8 +15,19 @@ export const Dialog: FunctionalComponent<DialogProps> = (props) => {
   useEffect(() => {
     if (dialogRef.current) {
       dialogRef.current.open = open;
+
+      if (open) {
+        const focusTarget = dialogRef.current.querySelector(
+          "[autofocus]"
+        ) as HTMLElement;
+        focusTarget
+          ? focusTarget.focus()
+          : dialogRef.current.querySelector("button")?.focus();
+      }
     }
   }, [props.open]);
+
+  console.log("open", open);
 
   return (
     <dialog class={dialog({ open })} ref={dialogRef} onClose={onClose}>

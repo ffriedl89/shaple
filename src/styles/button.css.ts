@@ -5,15 +5,17 @@ export const button = recipe({
   base: {
     fontWeight: "700",
     textDecoration: "none",
-    padding: spaceVars["xs"],
+    padding: spaceVars["2xs"],
     textAlign: "center",
-    cursor: "pointer",
     fontSize: fontVars.step._0,
     userSelect: "none",
     textRendering: "optimizeLegibility",
     selectors: {
       "&:focus-visible": {
-        outline: "2px solid",
+        outlineOffset: "2px",
+        outlineWidth: "2px",
+        outlineStyle: "solid",
+        outlineColor: themeVars.colors.hit,
       },
     },
   },
@@ -34,10 +36,6 @@ export const button = recipe({
           "&:active": {
             backgroundColor: themeVars.colors.interactiveActive,
           },
-          "&:focus-visible": {
-            outlineOffset: "-4px",
-            outlineColor: themeVars.colors.bg,
-          },
         },
       },
       secondary: {
@@ -56,11 +54,16 @@ export const button = recipe({
             borderColor: themeVars.colors.interactiveActive,
             backgroundColor: themeVars.colors.bg,
           },
-          "&:focus-visible": {
-            outlineOffset: "2px",
-            outlineColor: themeVars.colors.hit,
-          },
         },
+      },
+    },
+    disabled: {
+      true: {
+        cursor: "not-allowed",
+        opacity: 0.5,
+      },
+      false: {
+        cursor: "pointer",
       },
     },
   },
@@ -68,5 +71,6 @@ export const button = recipe({
   defaultVariants: {
     element: "block",
     variant: "primary",
+    disabled: false,
   },
 });

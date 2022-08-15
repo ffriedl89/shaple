@@ -8,6 +8,7 @@ import { Layout } from "../components/layout/Layout";
 import { useSyncTabs } from "../store/hooks/useSyncTabs";
 import { useDailyGame } from "../store/hooks/useDailyGame";
 import { useGameState } from "../store/hooks/useGameState";
+import { Nav } from "../components/layout/Nav";
 
 export const Home = () => {
   useDailyGame();
@@ -22,14 +23,18 @@ export const Home = () => {
   }
 
   return (
-    <Layout>
-      <Header></Header>
-      <GameGrid></GameGrid>
-      <p>
-        Time remaining: <RemainingTime />
-      </p>
-      <Keyboard></Keyboard>
+    <>
+      <Layout>
+        <Header>
+          <Nav></Nav>
+        </Header>
+        <GameGrid></GameGrid>
+        <p>
+          Time remaining: <RemainingTime />
+        </p>
+        <Keyboard></Keyboard>
+      </Layout>
       <WinDialog open={winDialogIsOpen} onOpenChange={handleClose}></WinDialog>
-    </Layout>
+    </>
   );
 };

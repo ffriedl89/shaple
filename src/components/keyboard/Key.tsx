@@ -17,7 +17,11 @@ export const Key: FunctionComponent<KeyProps> = (props) => {
     <button
       class={keyClass}
       aria-label={ariaLabel}
-      onClick={onClick}
+      onClick={(event) => {
+        if (!disabled) {
+          onClick(event);
+        }
+      }}
       aria-disabled={disabled}
     >
       {children}

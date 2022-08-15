@@ -5,6 +5,7 @@ export const winDialogFormClass = style({
   display: "flex",
   gap: "1rem",
   flexDirection: "column",
+  textAlign: "center",
 });
 
 export const sharingContainerClass = style({

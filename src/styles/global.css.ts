@@ -14,6 +14,8 @@ globalStyle("body, h1, h2, h3, h4,p, figure, blockquote, dl, dd", {
 
 globalStyle("ul[role='list'], ol[role='list']", {
   listStyle: "none",
+  marginBlock: 0,
+  paddingInline: 0,
 });
 
 globalStyle("html", {

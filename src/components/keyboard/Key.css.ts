@@ -1,18 +1,17 @@
 import { style } from "@vanilla-extract/css";
-import { fontVars, spaceVars, themeVars } from "../../styles/vars.css";
+import { spaceVars, themeVars } from "../../styles/vars.css";
 
 export const keyClass = style({
   backgroundColor: themeVars.colors.interactive,
   border: "none",
-  minWidth: "44px",
-  minHeight: "44px",
-  width: spaceVars.pairs["xl-2xl"],
-  height: spaceVars.pairs["xl-2xl"],
-  padding: spaceVars["xs"],
+  width: spaceVars.pairs["l-xl"],
+  height: spaceVars.pairs["l-xl"],
+  padding: spaceVars.pairs["2xs-xs"],
+  objectFit: "contain",
   textAlign: "center",
   cursor: "pointer",
-  fontSize: fontVars.step._2,
   userSelect: "none",
+  fontWeight: "900",
   selectors: {
     "&[aria-disabled=true]": {
       cursor: "not-allowed",
@@ -25,9 +24,10 @@ export const keyClass = style({
       backgroundColor: themeVars.colors.interactiveActive,
     },
     "&:focus-visible": {
-      outlineOffset: "-4px",
-      outlineColor: themeVars.colors.bg,
-      outline: "2px solid",
+      outlineOffset: "2px",
+      outlineWidth: "2px",
+      outlineStyle: "solid",
+      outlineColor: themeVars.colors.hit,
     },
   },
 });

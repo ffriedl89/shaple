@@ -58,13 +58,10 @@ export const dialog = recipe({
     open: {
       false: {
         opacity: 0,
+        pointerEvents: "none",
       },
       true: {
         opacity: 1,
-        animationDelay: "2s",
-        animationName: tada,
-        animationDuration: "1500ms",
-        animationTimingFunction: "ease-in-out",
       },
     },
   },

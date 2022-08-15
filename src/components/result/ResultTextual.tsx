@@ -1,3 +1,4 @@
+import { useGamePath } from "../../store/hooks/useGamePath";
 import { GamePath, PickStatus } from "../../store/types";
 
 function getOrdinal(value: number) {
@@ -13,36 +14,49 @@ function getOrdinal(value: number) {
   return `${value}${ordinals[pr.select(value)]}`;
 }
 
-export function generateTextualGamePath(path: GamePath) {
-  const lines = path.map((round) => {
+export function generateTextualGamePath(path: PickStatus[][]) {
+  const lines = path.map((picks, index) => {
     const lineStatus: { hits: Array<string>; shapeHits: Array<string> } = {
       hits: [],
       shapeHits: [],
     };
-    for (const [index, pick] of round.picks.entries()) {
-      if (pick.status === "hit") {
+    for (const [index, status] of picks.entries()) {
+      if (status === "hit") {
         lineStatus.hits.push(getOrdinal(index + 1));
       }
-      if (pick.status === "shape-hit") {
+      if (status === "shape-hit") {
         lineStatus.shapeHits.push(getOrdinal(index + 1));
       }
     }
     const hits =
-      lineStatus.hits.length > 0 ? `${lineStatus.hits.join(",")} x` : "";
+      lineStatus.hits.length > 0
+        ? `${lineStatus.hits.join(", ")} perfect!`
+        : "";
     const shapeHits =
       lineStatus.shapeHits.length > 0
-        ? `${lineStatus.shapeHits.join(",")}~`
+        ? `${lineStatus.shapeHits.join(
+            ", "
+          )} shape correct, but wrong position!`
         : "";
     const lineResult =
-      hits || shapeHits ? `${hits}${hits ? ` ${shapeHits}` : shapeHits}` : "";
+      hits || shapeHits
+        ? `Line: ${index + 1}: ${hits}${hits ? ` ${shapeHits}` : shapeHits}`
+        : "";
 
     return `${lineResult}`;
   });
-  return lines.join("\n");
+  return lines;
 }
 
 type ResultTextualProps = { path: PickStatus[][] | null };
 
 export const ResultTextual = (props: ResultTextualProps) => {
-  return <p></p>;
+  const lines = props.path ? generateTextualGamePath(props.path) : null;
+  return lines ? (
+    <ol role="list">
+      {lines.map((line) => (
+        <li>{line}</li>
+      ))}
+    </ol>
+  ) : null;
 };

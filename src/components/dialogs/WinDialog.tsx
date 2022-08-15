@@ -33,6 +33,7 @@ export const WinDialog = (props: WinDialogProps) => {
         </div>
         <div>
           <button
+            autofocus
             class={button({ element: "inline", variant: "secondary" })}
             id="confirmBtn"
             value="default"

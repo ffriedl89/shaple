@@ -8,13 +8,21 @@ import { Square } from "../shapes/Square";
 import { Triangle } from "../shapes/Triangle";
 import { Key } from "./Key";
 import { keyboardClass } from "./Keyboard.css";
+import { useRovingTabindex } from "use-roving-tabindex";
 
 export const Keyboard = () => {
   const makePick = useMakePick();
   const removePick = useRemovePick();
 
+  const [compositeRef] = useRovingTabindex();
+
   return (
-    <div class={keyboardClass}>
+    <div
+      class={keyboardClass}
+      role="toolbar"
+      aria-label="Make your pick with one of the shapes"
+      ref={compositeRef}
+    >
       <Key aria-label="Pick square" onClick={() => makePick("square")}>
         <Square />
       </Key>
