@@ -10,7 +10,6 @@ const extractHsl = (color: string) => {
   const groups = color.match(
     /hsl\((?<h>\d+),\s*(?<s>\d+)%,\s*(?<l>\d+)%\)/
   )?.groups;
-  console.log(groups, color);
   if (groups) {
     return [
       parseInt(groups.h),

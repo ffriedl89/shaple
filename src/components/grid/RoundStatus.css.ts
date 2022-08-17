@@ -13,7 +13,7 @@ export const roundStatusShapeClass = style({
   transition: "color 200ms linear, filter 200ms linear",
 });
 
-export const variant = styleVariants({
+export const roundStatusVariant = styleVariants({
   default: [roundStatusShapeClass],
   hit: [
     roundStatusShapeClass,

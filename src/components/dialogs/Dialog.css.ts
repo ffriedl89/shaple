@@ -10,7 +10,7 @@ export const dialogContentClass = style({
   position: "relative",
   backgroundColor: themeVars.colors.bg,
   border: 0,
-  padding: "2rem",
+  padding: "1rem",
   isolation: "isolate",
   clipPath: `polygon(${edgeSizeVar} 0%, 100% 0, 100% calc(100% - ${edgeSizeVar}), calc(100% - ${edgeSizeVar}) 100%, 0 100%, 0 ${edgeSizeVar})`,
   selectors: {
@@ -48,11 +48,10 @@ export const dialog = recipe({
     border: "none",
     color: themeVars.colors.text,
     display: "flex",
-    top: 0,
-    bottom: 0,
+    top: "20vh",
     margin: "auto",
     transition: "opacity 1s ease-in-out",
-    maxWidth: "min-content",
+    maxWidth: "fit-content",
   },
   variants: {
     open: {

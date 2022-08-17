@@ -12,6 +12,10 @@ globalStyle("body, h1, h2, h3, h4,p, figure, blockquote, dl, dd", {
   margin: 0,
 });
 
+globalStyle("p", {
+  maxWidth: "90ch",
+});
+
 globalStyle("ul[role='list'], ol[role='list']", {
   listStyle: "none",
   marginBlock: 0,

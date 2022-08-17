@@ -10,7 +10,7 @@ export const picksClass = style({
   vars: {
     [roundLength]: "4",
   },
-  gap: sizeVars.step._1,
+  gap: spaceVars.pairs["2xs-xs"],
   justifyItems: "center",
   height: spaceVars.pairs["m-l"],
 });

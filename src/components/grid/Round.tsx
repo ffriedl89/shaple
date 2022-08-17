@@ -25,7 +25,7 @@ export const Round = (props: RoundProps) => {
       class={picksClass}
       style={assignInlineVars({ [roundLength]: `${config.roundLength}` })}
     >
-      <RoundStatus summary={summary}></RoundStatus>
+      <RoundStatus summary={summary} round={round}></RoundStatus>
       {ROUND_ARRAY.map((_, index) => {
         const pick = picks[index];
         const status =

@@ -9,6 +9,8 @@ import { useSyncTabs } from "../store/hooks/useSyncTabs";
 import { useDailyGame } from "../store/hooks/useDailyGame";
 import { useGameState } from "../store/hooks/useGameState";
 import { Nav } from "../components/layout/Nav";
+import Router from "preact-router";
+import { Intro } from "../components/dialogs/Intro";
 
 export const Home = () => {
   useDailyGame();
@@ -29,12 +31,15 @@ export const Home = () => {
           <Nav></Nav>
         </Header>
         <GameGrid></GameGrid>
-        <p>
+        <div>
           Time remaining: <RemainingTime />
-        </p>
+        </div>
         <Keyboard></Keyboard>
       </Layout>
       <WinDialog open={winDialogIsOpen} onOpenChange={handleClose}></WinDialog>
+      <Router>
+        <Intro path="/home/intro" />
+      </Router>
     </>
   );
 };

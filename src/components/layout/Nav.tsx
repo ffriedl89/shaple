@@ -5,17 +5,8 @@ import { navClass } from "./Header.css";
 export const Nav = () => {
   return (
     <nav class={navClass}>
-      <Link
-        href="/intro"
-        class={button({ variant: "secondary", disabled: true })}
-      >
+      <Link href="/home/intro" class={button({ variant: "secondary" })}>
         Intro
-      </Link>
-      <Link
-        href="/stats"
-        class={button({ variant: "secondary", disabled: true })}
-      >
-        Stats
       </Link>
     </nav>
   );

@@ -27,11 +27,26 @@ export const Dialog: FunctionalComponent<DialogProps> = (props) => {
     }
   }, [props.open]);
 
-  console.log("open", open);
+  useEffect(() => {
+    const handler = (event: KeyboardEvent) => {
+      console.log(event);
+      if (event.key === "Escape") {
+        onClose?.();
+      }
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, []);
 
   return (
-    <dialog class={dialog({ open })} ref={dialogRef} onClose={onClose}>
-      <div class={dialogContentClass}>{children}</div>
+    <dialog
+      class={dialog({ open })}
+      ref={dialogRef}
+      onClose={() => onClose?.()}
+    >
+      <form method="dialog" class={dialogContentClass}>
+        {children}
+      </form>
     </dialog>
   );
 };

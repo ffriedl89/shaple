@@ -2,6 +2,7 @@ import { shapeClass } from "./shape.css";
 import { TShapeProps } from "./types";
 
 export function Heart(props: TShapeProps) {
+  const { filled = true } = props;
   return (
     <svg
       class={`${shapeClass} ${props.class}`}
@@ -9,7 +10,9 @@ export function Heart(props: TShapeProps) {
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        fill="currentColor"
+        fill={filled ? "currentColor" : undefined}
+        stroke={!filled ? "currentColor" : undefined}
+        strokeWidth="4"
         d="M 10,30
            A 20,20 0,0,1 50,30
            A 20,20 0,0,1 90,30

@@ -19,8 +19,8 @@ export const WinDialog = (props: WinDialogProps) => {
         props.onOpenChange?.(false);
       }}
     >
-      <form method="dialog" class={winDialogFormClass}>
-        <p class={heading({ level: 1 })}>Congratulations!</p>
+      <div class={winDialogFormClass}>
+        <p class={heading({ level: 1 })}>Congratz!</p>
         <p class={heading({ level: 2 })}>You have completed today's game!</p>
         <p>
           A new game will be available in:
@@ -41,7 +41,7 @@ export const WinDialog = (props: WinDialogProps) => {
             Close
           </button>
         </div>
-      </form>
+      </div>
     </Dialog>
   );
 };

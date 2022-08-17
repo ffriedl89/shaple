@@ -1,1 +1,4 @@
-export type TShapeProps = { class?: string };
+export type TShapeProps = {
+  class?: string;
+  filled?: boolean;
+};
