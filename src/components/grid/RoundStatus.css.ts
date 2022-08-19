@@ -6,6 +6,8 @@ export const roundStatusClass = style({
   gap: "0.25rem",
   gridTemplateColumns: "1fr 1fr",
   gridTemplateRows: "1fr 1fr",
+  placeItems: 'stretch',
+  width: '100%'
 });
 
 export const roundStatusShapeClass = style({

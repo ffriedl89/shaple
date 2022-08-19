@@ -18,6 +18,8 @@ const pickClass = style({
   color: pickColorVar,
   position: "relative",
   animationDelay: `calc(${animationOrder} * 750ms)`,
+  display: 'grid',
+  placeItems: 'stretch'
 });
 
 export const variant = styleVariants({
