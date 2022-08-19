@@ -3,6 +3,7 @@ import { spaceVars, themeVars } from "../../styles/vars.css";
 
 export const keyClass = style({
   backgroundColor: themeVars.colors.interactive,
+  color: themeVars.colors.text,
   border: "none",
   width: spaceVars.pairs["l-xl"],
   height: spaceVars.pairs["l-xl"],

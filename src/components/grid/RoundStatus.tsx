@@ -3,6 +3,7 @@ import { TRoundStatus } from "../../logic/game-logic";
 import { roundStatusClass, roundStatusVariant } from "./RoundStatus.css";
 import { useConfig } from "../../store/hooks/useConfig";
 import { ScreenReaderOnly } from "../a11y/ScreenReaderOnly";
+import { useSelector } from "../../store/hooks/useSelector";
 
 type RoundStatusProps = Pick<TRoundStatus, "summary"> & { round: number };
 
@@ -12,6 +13,8 @@ const singularPluralShape = (nr: number) =>
 export const RoundStatus = (props: RoundStatusProps) => {
   const { summary, round } = props;
   const config = useConfig();
+  const currentRound = useSelector((state) => state.currentRound);
+  const isAlreadyFinished = round < currentRound;
 
   const misses = config.roundLength - summary.hit - summary.shapeHit;
 
@@ -29,7 +32,7 @@ export const RoundStatus = (props: RoundStatusProps) => {
       ))}
       {Array.from(Array(misses)).map(() => (
         <Triangle
-          filled={false}
+          filled={isAlreadyFinished}
           class={roundStatusVariant["default"]}
         ></Triangle>
       ))}
