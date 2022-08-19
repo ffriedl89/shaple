@@ -32,7 +32,7 @@ globalStyle("html:focus-within", {
 });
 
 globalStyle("body", {
-  minHeight: "100vh",
+  minHeight: ["100vh", "100dvh"],
   textRendering: "optimizeSpeed",
   lineHeight: 1.5,
   backgroundColor: themeVars.colors.bg,
@@ -55,4 +55,5 @@ globalStyle("input, button, textarea, select", {
 
 globalFontFace("Inter", {
   src: 'url("/public/Inter-Thin.ttf") format("woff")',
+  fontDisplay: "swap",
 });
