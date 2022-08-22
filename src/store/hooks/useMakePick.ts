@@ -1,3 +1,4 @@
+import { route } from "preact-router";
 import { determineGameState } from "../../logic/game-logic";
 import { StoreState } from "../store-state";
 import { Shape } from "../types";

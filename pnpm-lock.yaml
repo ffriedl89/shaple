@@ -9,7 +9,6 @@ specifiers:
   '@vanilla-extract/recipes': ^0.2.5
   '@vanilla-extract/vite-plugin': ^3.2.1
   date-fns: ^2.29.1
-  party-js: ^2.2.0
   preact: ^10.9.0
   preact-router: ^4.1.0
   rollup-plugin-visualizer: ^5.7.1
@@ -23,7 +22,6 @@ dependencies:
   '@vanilla-extract/dynamic': 2.0.2
   '@vanilla-extract/recipes': 0.2.5_@vanilla-extract+css@1.7.2
   date-fns: 2.29.1
-  party-js: 2.2.0
   preact: 10.10.0
   preact-router: 4.1.0_preact@10.10.0
   use-roving-tabindex: 0.1.2
@@ -990,10 +988,6 @@ packages:
     dependencies:
       p-limit: 3.1.0
     dev: true
-
-  /party-js/2.2.0:
-    resolution: {integrity: sha512-50hGuALCpvDTrQLPQ1fgUgxKIWAH28ShVkmeK/3zhO0YJyCqkhrZhQEkWPxDYLvbFJ7YAXyROmFEu35gKpZLtQ==}
-    dev: false
 
   /path-exists/4.0.0:
     resolution: {integrity: sha512-ak9Qy5Q7jYb2Wwcey5Fpvg2KoAc/ZIhLSLOSBmRmygPsGwkVVt0fZa0qrtMz+m6tJTAHfZQ8FnmB4MG4LWy7/w==}

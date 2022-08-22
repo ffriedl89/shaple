@@ -3,7 +3,7 @@ import { useEffect } from "preact/hooks";
 
 type RedirectProps = {
   to: string;
-  path: string;
+  path?: string;
 };
 
 export const Redirect = (props: RedirectProps) => {

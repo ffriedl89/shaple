@@ -1,5 +1,3 @@
-import { useState } from "preact/hooks";
-import { WinDialog } from "../components/dialogs/WinDialog";
 import { RemainingTime } from "../components/RemainingTime";
 import { GameGrid } from "../components/grid/GameGrid";
 import { Keyboard } from "../components/keyboard/Keyboard";
@@ -7,25 +5,21 @@ import { Header } from "../components/layout/Header";
 import { Layout } from "../components/layout/Layout";
 import { useSyncTabs } from "../store/hooks/useSyncTabs";
 import { useDailyGame } from "../store/hooks/useDailyGame";
-import { useGameState } from "../store/hooks/useGameState";
 import { Nav } from "../components/layout/Nav";
 import Router from "preact-router";
-import { Intro } from "../components/dialogs/Intro";
+import { Win } from "./home/Win";
+import { Intro } from "./home/Intro";
+import { useGameState } from "../store/hooks/useGameState";
+import { Redirect } from "../components/routing/Redirect";
 
 export const Home = () => {
   useDailyGame();
   useSyncTabs();
   const gameState = useGameState();
-  const [dialogState, setDialogState] = useState({ dismissed: false });
-
-  const winDialogIsOpen = !dialogState.dismissed && gameState === "finished";
-
-  function handleClose() {
-    setDialogState({ dismissed: true });
-  }
 
   return (
     <>
+      {gameState === "finished" ? <Redirect to="/home/win" /> : null}
       <Layout>
         <Header>
           <Nav></Nav>
@@ -36,9 +30,9 @@ export const Home = () => {
         </div>
         <Keyboard></Keyboard>
       </Layout>
-      <WinDialog open={winDialogIsOpen} onOpenChange={handleClose}></WinDialog>
       <Router>
         <Intro path="/home/intro" />
+        <Win path="/home/win" />
       </Router>
     </>
   );

@@ -29,7 +29,6 @@ export const Dialog: FunctionalComponent<DialogProps> = (props) => {
 
   useEffect(() => {
     const handler = (event: KeyboardEvent) => {
-      console.log(event);
       if (event.key === "Escape") {
         onClose?.();
       }

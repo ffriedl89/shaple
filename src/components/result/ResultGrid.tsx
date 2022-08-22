@@ -39,7 +39,6 @@ export function useGameFromUrl() {
     window.addEventListener("locationchange", handler);
     return () => window.removeEventListener("locationchange", handler);
   }, []);
-  console.log(duration);
   return { path, duration };
 }
 

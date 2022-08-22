@@ -14,7 +14,6 @@
     "@vanilla-extract/dynamic": "^2.0.2",
     "@vanilla-extract/recipes": "^0.2.5",
     "date-fns": "^2.29.1",
-    "party-js": "^2.2.0",
     "preact": "^10.9.0",
     "preact-router": "^4.1.0",
     "use-roving-tabindex": "^0.1.2",

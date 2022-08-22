@@ -1,4 +1,5 @@
 import { assignInlineVars } from "@vanilla-extract/dynamic";
+import { route } from "preact-router";
 import { useConfig } from "../../store/hooks/useConfig";
 import { useGameState } from "../../store/hooks/useGameState";
 import { useRoundPick } from "../../store/hooks/useRoundPick";
