@@ -29,8 +29,7 @@ export const Round = (props: RoundProps) => {
       <RoundStatus summary={summary} round={round}></RoundStatus>
       {ROUND_ARRAY.map((_, index) => {
         const pick = picks[index];
-        const status =
-          pick && gameState === "finished" ? pick.status : "default";
+        const status = pick && gameState === "won" ? pick.status : "default";
         return pick ? (
           <Pick
             style={assignInlineVars({

@@ -1,4 +1,3 @@
-import { route } from "preact-router";
 import { determineGameState } from "../../logic/game-logic";
 import { StoreState } from "../store-state";
 import { Shape } from "../types";
@@ -11,7 +10,7 @@ export const useMakePick = () => {
       const nextState = structuredClone(prev) as StoreState;
       let currentRound = prev.currentRound;
 
-      if (prev.gameState !== "finished") {
+      if (prev.gameState !== "won" && prev.gameState !== "lost") {
         nextState.rounds[currentRound].push(shape);
 
         if (nextState.rounds[currentRound].length === prev.config.roundLength) {
@@ -26,7 +25,7 @@ export const useMakePick = () => {
         nextState.try.start = new Date().toISOString();
       }
 
-      if (nextState.gameState === "finished" && nextState.try.end === null) {
+      if (nextState.gameState === "won" && nextState.try.end === null) {
         nextState.try.end = new Date().toISOString();
       }
 

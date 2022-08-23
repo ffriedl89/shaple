@@ -1,5 +1,5 @@
 import { StoreState } from "../store/store-state";
-import { PickStatus, Shape } from "../store/types";
+import { GameState, PickStatus, Shape } from "../store/types";
 
 type TResultEntry = { shape: Shape; status: PickStatus };
 export type TRoundStatus = {
@@ -59,17 +59,25 @@ export function determineRoundStatus(round: Shape[], result: Shape[]) {
     );
 }
 
-export function determineGameState(state: StoreState) {
+export function determineGameState(state: StoreState): GameState {
   const roundIndex = state.currentRound > 0 ? state.currentRound - 1 : 0;
   const isGameFinished = state.result.every(
     (pick, index) => pick === state.rounds[roundIndex][index]
   );
   if (isGameFinished) {
-    return "finished";
+    return "won";
+  }
+  if (
+    state.currentRound === state.config.gameLength &&
+    state.rounds[roundIndex].length === state.config.roundLength
+  ) {
+    return "lost";
   }
   if (state.currentRound > 0) {
     return "started";
   }
+  console.log("currentRound", state.currentRound, state.config.gameLength);
+
   return "not-started";
 }
 

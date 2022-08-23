@@ -22,4 +22,4 @@ export type GamePath = Array<{
   };
 }>;
 
-export type GameState = "not-started" | "started" | "finished";
+export type GameState = "not-started" | "started" | "won" | "lost";

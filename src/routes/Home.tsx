@@ -11,6 +11,7 @@ import { Win } from "./home/Win";
 import { Intro } from "./home/Intro";
 import { useGameState } from "../store/hooks/useGameState";
 import { Redirect } from "../components/routing/Redirect";
+import { Loss } from "./home/Loss";
 
 export const Home = () => {
   useDailyGame();
@@ -19,7 +20,8 @@ export const Home = () => {
 
   return (
     <>
-      {gameState === "finished" ? <Redirect to="/home/win" /> : null}
+      {gameState === "won" ? <Redirect to="/home/win" /> : null}
+      {gameState === "lost" ? <Redirect to="/home/loss" /> : null}
       <Layout>
         <Header>
           <Nav></Nav>
@@ -33,6 +35,7 @@ export const Home = () => {
       <Router>
         <Intro path="/home/intro" />
         <Win path="/home/win" />
+        <Loss path="/home/loss" />
       </Router>
     </>
   );
