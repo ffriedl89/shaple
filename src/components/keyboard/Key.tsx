@@ -11,7 +11,7 @@ export const Key: FunctionComponent<KeyProps> = (props) => {
   const { children, onClick, "aria-label": ariaLabel } = props;
 
   const gameState = useGameState();
-  const disabled = gameState === "finished";
+  const disabled = gameState === "won";
 
   return (
     <button

@@ -12,7 +12,10 @@ export const useSharing = () => {
 ${emojis}`;
 
   const gamePathSearchParams = useGamePathSearchParams();
-  const resultUrl = new URL("/result", "https://shaple.pages.dev");
+  const resultUrl = new URL(
+    "/result",
+    window.location.protocol + "//" + window.location.host
+  );
   const url = `${resultUrl.href}?${gamePathSearchParams}`;
 
   return { text, url };

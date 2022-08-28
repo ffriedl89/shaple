@@ -1,4 +1,5 @@
-import { determineGameState } from "../../logic/game-logic";
+import { differenceInMilliseconds, parseISO } from "date-fns";
+import { determineGameState, updateProfile } from "../../logic/game-logic";
 import { StoreState } from "../store-state";
 import { Shape } from "../types";
 import { useSetState } from "./useSetState";
@@ -27,6 +28,11 @@ export const useMakePick = () => {
 
       if (nextState.gameState === "won" && nextState.try.end === null) {
         nextState.try.end = new Date().toISOString();
+        const duration = differenceInMilliseconds(
+          parseISO(nextState.try.end),
+          parseISO(nextState.try.start!)
+        );
+        nextState.profile = updateProfile(prev.profile, duration, currentRound);
       }
 
       return nextState;
