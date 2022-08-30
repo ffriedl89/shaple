@@ -1,5 +1,5 @@
 import { StoreState } from "../store/store-state";
-import { GameState, PickStatus, Shape } from "../store/types";
+import { GameState, PickStatus, Profile, Shape } from "../store/types";
 
 type TResultEntry = { shape: Shape; status: PickStatus };
 export type TRoundStatus = {
@@ -104,3 +104,34 @@ export const getRoundPicks = ({
   }
   return { picks, summary };
 };
+
+export function updateProfile(
+  previousProfile: Profile,
+  duration: number,
+  currentRound: number
+): Profile {
+  const wonGameLengths = [...previousProfile.wonGameLengths];
+  wonGameLengths[currentRound] =
+    wonGameLengths[currentRound] !== undefined
+      ? wonGameLengths[currentRound] + 1
+      : 1;
+
+  const currentStreak = previousProfile.currentStreak + 1;
+  const fastestGame =
+    previousProfile.fastestGame === undefined ||
+    previousProfile.fastestGame < duration
+      ? duration
+      : previousProfile.fastestGame;
+  const longestStreak =
+    previousProfile.longestStreak === undefined ||
+    previousProfile.longestStreak < currentStreak
+      ? currentStreak
+      : previousProfile.longestStreak;
+
+  return {
+    currentStreak,
+    wonGameLengths,
+    fastestGame,
+    longestStreak,
+  };
+}

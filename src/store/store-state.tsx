@@ -7,7 +7,7 @@ import {
   subDays,
 } from "date-fns";
 import { createRandomWithSeed } from "../util/create-random-with-seed";
-import { GameState, Shape, Shapes } from "./types";
+import { GameState, Profile, Shape, Shapes } from "./types";
 
 export type StoreState = {
   result: Array<Shape>;
@@ -25,6 +25,7 @@ export type StoreState = {
   };
   startDate: Date;
   endDate: Date;
+  profile: Profile;
 };
 
 const initialGameLength = 10;
@@ -78,13 +79,32 @@ const defaultState: StoreState = {
   },
   gameState: "not-started",
   ...getStartEndDate(),
+  profile: {
+    currentStreak: 0,
+    wonGameLengths: [],
+  },
 };
 
-const storedState = window.localStorage.getItem("playState")
+let state: StoreState = window.localStorage.getItem("playState")
   ? JSON.parse(window.localStorage.getItem("playState")!)
   : defaultState;
 
+if (state && state.resultSeed !== resultSeed) {
+  // reset state;
+  state.currentRound = 0;
+  state.gameState = "not-started";
+  state.try = {
+    start: null,
+    end: null,
+  };
+  state.rounds = generateInitialRounds();
+}
+
+if (state.profile === undefined) {
+  state.profile = defaultState.profile;
+}
+
 export const initialState: StoreState = {
-  ...storedState,
+  ...state,
   ...getStartEndDate(),
 };

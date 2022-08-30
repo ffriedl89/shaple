@@ -23,3 +23,10 @@ export type GamePath = Array<{
 }>;
 
 export type GameState = "not-started" | "started" | "won" | "lost";
+
+export type Profile = {
+  currentStreak: number;
+  fastestGame?: number;
+  longestStreak?: number;
+  wonGameLengths: number[];
+};
