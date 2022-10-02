@@ -15,24 +15,3 @@ export const navClass = style({
   gap: spaceVars.pairs["xs-s"],
   gridArea: "nav",
 });
-
-export const logoTriangleClass = style({
-  fontSize: fontVars.step._1,
-  color: themeVars.colors.hit,
-  textShadow: "0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor",
-});
-
-export const logoTextClass = style({
-  gridArea: "logo",
-  textAlign: "center",
-  textDecoration: "none",
-  color: themeVars.colors.text,
-  textDecorationSkipInk: "none",
-  selectors: {
-    "&:focus-visible": {
-      outline: "2px solid",
-      outlineOffset: "2px",
-      outlineColor: themeVars.colors.hit,
-    },
-  },
-});

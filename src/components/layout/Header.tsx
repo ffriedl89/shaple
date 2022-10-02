@@ -1,16 +1,11 @@
 import { FunctionalComponent } from "preact";
-import { Link } from "preact-router";
-import { heading } from "../../styles/heading.css";
-import { headerClass, logoTextClass, logoTriangleClass } from "./Header.css";
+import { headerClass } from "./Header.css";
+import { Logo } from "./Logo";
 
 export const Header: FunctionalComponent = ({ children }) => {
   return (
     <header class={headerClass}>
-      <Link href="/" class={logoTextClass}>
-        <h1 class={heading({ level: 3 })}>
-          Sh<span class={logoTriangleClass}>&#9650;</span>ple
-        </h1>
-      </Link>
+      <Logo />
       {children}
     </header>
   );

@@ -2,7 +2,6 @@ import { route } from "preact-router";
 import { ScreenReaderOnly } from "../../components/a11y/ScreenReaderOnly";
 import { Dialog } from "../../components/dialogs/Dialog";
 import { roundStatusVariant } from "../../components/grid/RoundStatus.css";
-import { logoTriangleClass } from "../../components/layout/Header.css";
 import { Triangle } from "../../components/shapes/Triangle";
 import { button } from "../../styles/button.css";
 import { heading } from "../../styles/heading.css";
@@ -16,9 +15,7 @@ export const Intro = (props: IntroProps) => {
   return (
     <Dialog open={true} onClose={() => route("/home")}>
       <div class={introClass}>
-        <h2 class={heading({ level: 3 })}>
-          Welcome to Sh<span class={logoTriangleClass}>&#9650;</span>ple
-        </h2>
+        <h2 class={heading({ level: 3 })}>Welcome</h2>
         <p>
           Everyone in the world gets the same combination of shapes once per
           day!
