@@ -4,8 +4,8 @@ export const introClass = style({
   display: "flex",
   flexDirection: "column",
   gap: "1vh",
-  alignItems: "stetch",
   textAlign: "left",
+  padding: "1rem",
 });
 
 export const descriptionListClass = style({

@@ -7,7 +7,7 @@ export const button = recipe({
     textDecoration: "none",
     padding: spaceVars["2xs"],
     textAlign: "center",
-    fontSize: fontVars.step._0,
+    fontSize: fontVars.step._1,
     userSelect: "none",
     textRendering: "optimizeLegibility",
     selectors: {

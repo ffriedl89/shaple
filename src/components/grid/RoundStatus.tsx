@@ -1,4 +1,4 @@
-import { Triangle } from "../shapes/Triangle";
+import { Diamond as Triangle } from "../shapes/Triangle";
 import { TRoundStatus } from "../../logic/game-logic";
 import { roundStatusClass, roundStatusVariant } from "./RoundStatus.css";
 import { useConfig } from "../../store/hooks/useConfig";
