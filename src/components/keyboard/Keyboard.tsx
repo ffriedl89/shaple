@@ -1,11 +1,11 @@
 import { useMakePick } from "../../store/hooks/useMakePick";
 import { useRemovePick } from "../../store/hooks/useRemovePick";
-import { Circle } from "../shapes/Circle";
-import { Heart } from "../shapes/Heart";
-import { Hectagon } from "../shapes/Hectagon";
-import { Rhombus } from "../shapes/Rhombus";
-import { Square } from "../shapes/Square";
-import { Triangle } from "../shapes/Triangle";
+import { Ribbon as Circle } from "../shapes/Circle";
+import { Poodle as Heart } from "../shapes/Heart";
+import { Mouth as Hectagon } from "../shapes/Hectagon";
+import { Hat as Rhombus } from "../shapes/Rhombus";
+import { Dress as Square } from "../shapes/Square";
+import { Diamond as Triangle } from "../shapes/Triangle";
 import { Key } from "./Key";
 import { keyboardClass } from "./Keyboard.css";
 import { useRovingTabindex } from "use-roving-tabindex";

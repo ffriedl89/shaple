@@ -1,7 +1,7 @@
 import { globalFontFace } from "@vanilla-extract/css";
 
 import { globalStyle } from "@vanilla-extract/css";
-import { themeVars } from "./vars.css";
+import { fontVars, themeVars } from "./vars.css";
 
 globalStyle("*, *::before, *::after", {
   boxSizing: "border-box",
@@ -34,10 +34,12 @@ globalStyle("html:focus-within", {
 globalStyle("body", {
   minHeight: ["100vh", "100dvh"],
   textRendering: "optimizeSpeed",
+  fontSize: fontVars.step._1,
   lineHeight: 1.5,
   backgroundColor: themeVars.colors.bg,
   color: themeVars.colors.text,
-  fontFamily: "Inter",
+  // fontFamily: "Inter",
+  fontFamily: "OoohBaby",
 });
 
 globalStyle("a:not([class])", {
@@ -53,7 +55,12 @@ globalStyle("input, button, textarea, select", {
   font: "inherit",
 });
 
-globalFontFace("Inter", {
-  src: 'url("/public/Inter-Thin.ttf") format("woff")',
+// globalFontFace("Inter", {
+//   src: 'url("/public/Inter-Thin.ttf") format("woff")',
+//   fontDisplay: "swap",
+// });
+
+globalFontFace("OoohBaby", {
+  src: 'url("/public/OoohBaby-Regular.ttf") format("woff")',
   fontDisplay: "swap",
 });

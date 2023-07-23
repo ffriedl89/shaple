@@ -7,6 +7,7 @@ export const logoTextClass = style({
   textDecoration: "none",
   color: themeVars.colors.text,
   textDecorationSkipInk: "none",
+  transform: "rotate(-15deg)",
   selectors: {
     "&:focus-visible": {
       outline: "2px solid",

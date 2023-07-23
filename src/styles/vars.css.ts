@@ -45,16 +45,16 @@ export const sizeVars = createGlobalTheme(":root", {
 
 export const theme = {
   colors: {
-    bg: "hsl(0, 0%, 6%)",
-    bgInset: "hsl(0, 0%, 2%)",
-    interactive: "hsl(273, 87%, 72%)",
-    interactiveHover: "hsl(273, 87%, 62%)",
-    interactiveActive: "hsl(273, 87%, 42%)",
+    bg: "white",
+    bgInset: "rgb(210,80,153)",
+    interactive: "hsl(320, 95%, 58%)",
+    interactiveHover: "rgb(210,80,153)",
+    interactiveActive: "hsl(320, 95%, 58%)",
     miss: "hsl(0, 0%, 75%)",
-    hit: "hsl(273, 68%, 59%)",
-    shapeHit: "hsl(28, 100%, 53%)",
-    text: "white",
-    textOnColor: "black",
+    hit: "hsl(320, 95%, 58%)",
+    shapeHit: "#41254D",
+    text: "#41254D",
+    textOnColor: "white",
   },
 };
 

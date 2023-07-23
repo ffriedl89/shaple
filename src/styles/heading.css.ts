@@ -7,9 +7,9 @@ export const heading = recipe({
   },
   variants: {
     level: {
-      1: { fontSize: fontVars.step._4 },
-      2: { fontSize: fontVars.step._3 },
-      3: { fontSize: fontVars.step._2 },
+      1: { fontSize: fontVars.step._5 },
+      2: { fontSize: fontVars.step._4 },
+      3: { fontSize: fontVars.step._3 },
     },
   },
 
