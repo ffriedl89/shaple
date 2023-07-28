@@ -12,7 +12,10 @@ export const keyClass = style({
   textAlign: "center",
   cursor: "pointer",
   userSelect: "none",
+  lineHeight: 1.2,
   fontWeight: "900",
+  fontSize: "0.8rem",
+  touchAction: "manipulation",
   selectors: {
     "&[aria-disabled=true]": {
       cursor: "not-allowed",

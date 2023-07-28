@@ -48,7 +48,7 @@ export const dialog = recipe({
     border: "none",
     color: themeVars.colors.text,
     display: "flex",
-    top: "20vh",
+    top: "10vh",
     margin: "auto",
     transition: "opacity 1s ease-in-out",
     maxWidth: "fit-content",
