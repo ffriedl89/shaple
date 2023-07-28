@@ -7,7 +7,7 @@ export const logoTextClass = style({
   textDecoration: "none",
   color: themeVars.colors.text,
   textDecorationSkipInk: "none",
-  transform: "rotate(-15deg)",
+  transition: "transform 150ms",
   selectors: {
     "&:focus-visible": {
       outline: "2px solid",
@@ -15,6 +15,10 @@ export const logoTextClass = style({
       outlineColor: themeVars.colors.hit,
     },
   },
+});
+
+export const logoBarbieClass = style({
+  transform: "rotate(-15deg)",
 });
 
 export const logoHalloweenClass = style({
@@ -25,7 +29,7 @@ export const logoHalloweenClass = style({
 });
 
 export const logoTriangleClass = style({
-  fontSize: fontVars.step._1,
+  fontSize: fontVars.step._2,
   color: themeVars.colors.hit,
   textShadow: "0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor",
 });

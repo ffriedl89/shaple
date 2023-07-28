@@ -12,6 +12,9 @@ import { Intro } from "./home/Intro";
 import { useGameState } from "../store/hooks/useGameState";
 import { Redirect } from "../components/routing/Redirect";
 import { Loss } from "./home/Loss";
+import { ThemeSwitcher } from "../components/theme-switcher/ThemeSwitcher";
+import { Logo } from "../components/layout/Logo";
+import { ThemeSwitcherToggleButton } from "../components/layout/ThemeSwitcherToggleButton";
 
 export const Home = () => {
   useDailyGame();
@@ -24,7 +27,10 @@ export const Home = () => {
       {gameState === "lost" ? <Redirect to="/home/loss" /> : null}
       <Layout>
         <Header>
-          <Nav></Nav>
+          <ThemeSwitcherToggleButton />
+          <ThemeSwitcher />
+          <Logo />
+          <Nav />
         </Header>
         <GameGrid></GameGrid>
         <div>

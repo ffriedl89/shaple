@@ -7,7 +7,7 @@ export const Shapes = [
   "triangle",
 ] as const;
 
-export type Shape = typeof Shapes[number];
+export type Shape = (typeof Shapes)[number];
 
 export type PickStatus = "default" | "hit" | "miss" | "shape-hit";
 
@@ -30,3 +30,5 @@ export type Profile = {
   longestStreak?: number;
   wonGameLengths: number[];
 };
+
+export type Theme = "original" | "halloween" | "barbie";

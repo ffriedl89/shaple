@@ -1,10 +1,10 @@
 import { JSX } from "preact";
-import { Ribbon as Circle } from "../shapes/Circle";
-import { Poodle as Heart } from "../shapes/Heart";
-import { Mouth as Hectagon } from "../shapes/Hectagon";
-import { Hat as Rhombus } from "../shapes/Rhombus";
-import { Dress as Square } from "../shapes/Square";
-import { Diamond as Triangle } from "../shapes/Triangle";
+import { ThemedCircle } from "../shapes/Circle";
+import { ThemedHeart } from "../shapes/Heart";
+import { ThemedHectagon } from "../shapes/Hectagon";
+import { ThemedRhombus } from "../shapes/Rhombus";
+import { ThemedSquare } from "../shapes/Square";
+import { ThemedTriangle } from "../shapes/Triangle";
 import { PickStatus, Shape } from "../../store/types";
 import { pickShapeClass, variant } from "./Pick.css";
 
@@ -22,17 +22,17 @@ type ShapeProps = {
 const ShapeComp = (props: ShapeProps) => {
   switch (props.pick) {
     case "square":
-      return <Square {...props} />;
+      return <ThemedSquare {...props} />;
     case "circle":
-      return <Circle {...props} />;
+      return <ThemedCircle {...props} />;
     case "rhombus":
-      return <Rhombus {...props} />;
+      return <ThemedRhombus {...props} />;
     case "triangle":
-      return <Triangle {...props} />;
+      return <ThemedTriangle {...props} />;
     case "hectagon":
-      return <Hectagon {...props} />;
+      return <ThemedHectagon {...props} />;
     case "heart":
-      return <Heart {...props} />;
+      return <ThemedHeart {...props} />;
     default:
       return null;
   }

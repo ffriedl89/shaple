@@ -37,9 +37,9 @@ globalStyle("body", {
   fontSize: fontVars.step._1,
   lineHeight: 1.5,
   backgroundColor: themeVars.colors.bg,
+  transition: "color, background-color 150ms",
   color: themeVars.colors.text,
-  // fontFamily: "Inter",
-  fontFamily: "OoohBaby",
+  fontFamily: themeVars.font,
 });
 
 globalStyle("a:not([class])", {
@@ -55,10 +55,10 @@ globalStyle("input, button, textarea, select", {
   font: "inherit",
 });
 
-// globalFontFace("Inter", {
-//   src: 'url("/public/Inter-Thin.ttf") format("woff")',
-//   fontDisplay: "swap",
-// });
+globalFontFace("Inter", {
+  src: 'url("/public/Inter-Thin.ttf") format("woff")',
+  fontDisplay: "swap",
+});
 
 globalFontFace("OoohBaby", {
   src: 'url("/public/OoohBaby-Regular.ttf") format("woff")',

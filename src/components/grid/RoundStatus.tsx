@@ -1,4 +1,4 @@
-import { Diamond as Triangle } from "../shapes/Triangle";
+import { ThemedTriangle } from "../shapes/Triangle";
 import { TRoundStatus } from "../../logic/game-logic";
 import { roundStatusClass, roundStatusVariant } from "./RoundStatus.css";
 import { useConfig } from "../../store/hooks/useConfig";
@@ -22,19 +22,21 @@ export const RoundStatus = (props: RoundStatusProps) => {
     <div className={roundStatusClass} role="region" aria-live="polite">
       {Array.from(Array(summary.hit)).map(() => (
         <>
-          <Triangle class={roundStatusVariant["hit"]}></Triangle>
+          <ThemedTriangle class={roundStatusVariant["hit"]}></ThemedTriangle>
         </>
       ))}
       {Array.from(Array(summary.shapeHit)).map(() => (
         <>
-          <Triangle class={roundStatusVariant["shape-hit"]}></Triangle>
+          <ThemedTriangle
+            class={roundStatusVariant["shape-hit"]}
+          ></ThemedTriangle>
         </>
       ))}
       {Array.from(Array(misses)).map(() => (
-        <Triangle
+        <ThemedTriangle
           filled={isAlreadyFinished}
           class={roundStatusVariant["default"]}
-        ></Triangle>
+        ></ThemedTriangle>
       ))}
       <ScreenReaderOnly>
         {`Round ${round + 1}: ${summary.hit} ${singularPluralShape(

@@ -7,7 +7,7 @@ import {
   subDays,
 } from "date-fns";
 import { createRandomWithSeed } from "../util/create-random-with-seed";
-import { GameState, Profile, Shape, Shapes } from "./types";
+import { GameState, Profile, Shape, Shapes, Theme } from "./types";
 
 export type StoreState = {
   result: Array<Shape>;
@@ -26,6 +26,7 @@ export type StoreState = {
   startDate: Date;
   endDate: Date;
   profile: Profile;
+  theme: Theme;
 };
 
 const initialGameLength = 10;
@@ -83,6 +84,7 @@ const defaultState: StoreState = {
     currentStreak: 0,
     wonGameLengths: [],
   },
+  theme: "barbie",
 };
 
 let state: StoreState = window.localStorage.getItem("playState")
@@ -103,6 +105,12 @@ if (state && state.resultSeed !== resultSeed) {
 if (state.profile === undefined) {
   state.profile = defaultState.profile;
 }
+
+if (state.theme === undefined) {
+  state.theme = "barbie";
+}
+
+document.body.dataset.theme = state.theme;
 
 export const initialState: StoreState = {
   ...state,

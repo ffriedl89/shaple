@@ -1,4 +1,7 @@
-import { createGlobalTheme } from "@vanilla-extract/css";
+import {
+  createGlobalTheme,
+  createGlobalThemeContract,
+} from "@vanilla-extract/css";
 
 export const fontVars = createGlobalTheme(":root", {
   step: {
@@ -43,7 +46,7 @@ export const sizeVars = createGlobalTheme(":root", {
   },
 });
 
-export const theme = {
+export const themeBarbie = {
   colors: {
     bg: "white",
     bgInset: "rgb(210,80,153)",
@@ -56,6 +59,59 @@ export const theme = {
     text: "#41254D",
     textOnColor: "white",
   },
+  font: "OoohBaby",
 };
 
-export const themeVars = createGlobalTheme(":root", theme);
+export const themeOriginal = {
+  colors: {
+    bg: "hsl(262, 64%, 8%)",
+    bgInset: "hsl(263, 62%, 4%)",
+    interactive: "hsl(261, 87%, 72%)",
+    interactiveHover: "hsl(261, 87%, 62%)",
+    interactiveActive: "hsl(261, 87%, 42%)",
+    miss: "hsl(261, 88%, 80%)",
+    hit: "hsl(320, 95%, 58%)",
+    shapeHit: "hsl(41, 100%, 62%)",
+    text: "white",
+    textOnColor: "black",
+  },
+  font: "Inter",
+};
+
+export const themeHalloween = {
+  colors: {
+    bg: "hsl(0, 0%, 6%)",
+    bgInset: "hsl(0, 0%, 2%)",
+    interactive: "hsl(273, 87%, 72%)",
+    interactiveHover: "hsl(273, 87%, 62%)",
+    interactiveActive: "hsl(273, 87%, 42%)",
+    miss: "hsl(0, 0%, 75%)",
+    hit: "hsl(273, 68%, 59%)",
+    shapeHit: "hsl(28, 100%, 53%)",
+    text: "white",
+    textOnColor: "black",
+  },
+  font: "Inter",
+};
+
+export const themeVars = createGlobalThemeContract({
+  colors: {
+    bg: "colors-bg",
+    bgInset: "colors-bg-inset",
+    interactive: "colors-interactive",
+    interactiveHover: "colors-interactive-hover",
+    interactiveActive: "colors-interactive-active",
+    miss: "colors-miss",
+    hit: "colors-hit",
+    shapeHit: "colors-shape-hit",
+    text: "colors-text",
+    textOnColor: "colors-black",
+  },
+  font: "font",
+});
+
+createGlobalTheme(":root [data-theme=barbie]", themeVars, themeBarbie);
+
+createGlobalTheme(":root [data-theme=original]", themeVars, themeOriginal);
+
+createGlobalTheme(":root [data-theme=halloween]", themeVars, themeHalloween);
